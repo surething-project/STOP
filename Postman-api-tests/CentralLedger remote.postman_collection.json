@@ -1,0 +1,577 @@
+{
+	"info": {
+		"_postman_id": "670ebd82-82d6-4d18-8330-eb58cca11f30",
+		"name": "CentralLedger remote",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Trip",
+			"item": [
+				{
+					"name": "getTripById",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://node1.centralledger.xyz:8443/CentralLedger/v1/trip/13",
+							"protocol": "https",
+							"host": [
+								"node1",
+								"centralledger",
+								"xyz"
+							],
+							"port": "8443",
+							"path": [
+								"CentralLedger",
+								"v1",
+								"trip",
+								"13"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addTrip",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"initialCoordinates\": {\n        \"latitude\": 3.1,\n        \"longitude\": 2.1\n    }\n}"
+						},
+						"url": {
+							"raw": "centralledger.ist182061.tp.vps.tecnico.ulisboa.pt:8080/CentralLedger/v1/trip",
+							"host": [
+								"centralledger",
+								"ist182061",
+								"tp",
+								"vps",
+								"tecnico",
+								"ulisboa",
+								"pt"
+							],
+							"port": "8080",
+							"path": [
+								"CentralLedger",
+								"v1",
+								"trip"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "initializeTrip",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"number\": 1,\n\t\"tripId\": 1,\n\t\"coordinates\": {\n        \"latitude\": 2.2,\n        \"longitude\": 2.3\n    },\n    \"timestamp\": \"3456789\"\n}"
+						},
+						"url": {
+							"raw": "centralledger.ist182061.tp.vps.tecnico.ulisboa.pt:8080/CentralLedger/v1/trip/1/begin",
+							"host": [
+								"centralledger",
+								"ist182061",
+								"tp",
+								"vps",
+								"tecnico",
+								"ulisboa",
+								"pt"
+							],
+							"port": "8080",
+							"path": [
+								"CentralLedger",
+								"v1",
+								"trip",
+								"1",
+								"begin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "locateTrip",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"number\": 2,\n\t\"tripId\": 1,\n\t\"coordinates\": {\n        \"latitude\": 2.3,\n        \"longitude\": 2.4\n    },\n    \"timestamp\": \"345333333\"\n}"
+						},
+						"url": {
+							"raw": "centralledger.ist182061.tp.vps.tecnico.ulisboa.pt:8080/CentralLedger/v1/trip/1/locate",
+							"host": [
+								"centralledger",
+								"ist182061",
+								"tp",
+								"vps",
+								"tecnico",
+								"ulisboa",
+								"pt"
+							],
+							"port": "8080",
+							"path": [
+								"CentralLedger",
+								"v1",
+								"trip",
+								"1",
+								"locate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addProof",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"number\": 3,\n\t\"tripId\": 1,\n\t\"previousLocationSignature\": \"dsadsadwadsdsw\",\n\t\"inspectorLocationProof\": {\n        \"proofMessage\": {\n        \t\"transport\": \"sdasdad\",\n        \t\"inspect\": \"sadsadsa\",\n        \t\"inspectionId\": 1,\n        \t\"tripId\": 1,\n        \t\"nonce\": 56454,\n        \t\"timestamp\": \"56489744\",\n        \t\"coordinates\": {\n        \t\t\"latitude\": 2.3,\n        \t\t\"longitude\": 2.4\n        \t}\n        },\n        \"signature\": \"dslakjhdsjklahds\"\n    },\n    \"timestamp\": \"345333333\"\n}"
+						},
+						"url": {
+							"raw": "centralledger.ist182061.tp.vps.tecnico.ulisboa.pt:8080/CentralLedger/v1/trip/1/proof",
+							"host": [
+								"centralledger",
+								"ist182061",
+								"tp",
+								"vps",
+								"tecnico",
+								"ulisboa",
+								"pt"
+							],
+							"port": "8080",
+							"path": [
+								"CentralLedger",
+								"v1",
+								"trip",
+								"1",
+								"proof"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "endTrip",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"number\": 2,\n\t\"tripId\": 1,\n\t\"coordinates\": {\n        \"latitude\": 2.3,\n        \"longitude\": 2.4\n    },\n    \"timestamp\": \"345333333\"\n}"
+						},
+						"url": {
+							"raw": "centralledger.ist182061.tp.vps.tecnico.ulisboa.pt:8080/CentralLedger/v1/trip/1/end",
+							"host": [
+								"centralledger",
+								"ist182061",
+								"tp",
+								"vps",
+								"tecnico",
+								"ulisboa",
+								"pt"
+							],
+							"port": "8080",
+							"path": [
+								"CentralLedger",
+								"v1",
+								"trip",
+								"1",
+								"end"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "checkTripInspection",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "centralledger.ist182061.tp.vps.tecnico.ulisboa.pt:8080/CentralLedger/v1/trip/1/inspect",
+							"host": [
+								"centralledger",
+								"ist182061",
+								"tp",
+								"vps",
+								"tecnico",
+								"ulisboa",
+								"pt"
+							],
+							"port": "8080",
+							"path": [
+								"CentralLedger",
+								"v1",
+								"trip",
+								"1",
+								"inspect"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "forceEndTrip",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://node1.centralledger.xyz:8443/CentralLedger/v1/trip/1503/force",
+							"protocol": "https",
+							"host": [
+								"node1",
+								"centralledger",
+								"xyz"
+							],
+							"port": "8443",
+							"path": [
+								"CentralLedger",
+								"v1",
+								"trip",
+								"1503",
+								"force"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "registerTransport",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"publicKey\": \"fdsfds\"\n}"
+						},
+						"url": {
+							"raw": "https://node1.centralledger.xyz:8443/CentralLedger/v1/auth/transport/register",
+							"protocol": "https",
+							"host": [
+								"node1",
+								"centralledger",
+								"xyz"
+							],
+							"port": "8443",
+							"path": [
+								"CentralLedger",
+								"v1",
+								"auth",
+								"transport",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "registerInspect",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"publicKey\": \"fdsfdshhghg\"\n}"
+						},
+						"url": {
+							"raw": "centralledger.ist182061.tp.vps.tecnico.ulisboa.pt:8080/CentralLedger/v1/auth/inspect/register",
+							"host": [
+								"centralledger",
+								"ist182061",
+								"tp",
+								"vps",
+								"tecnico",
+								"ulisboa",
+								"pt"
+							],
+							"port": "8080",
+							"path": [
+								"CentralLedger",
+								"v1",
+								"auth",
+								"inspect",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Inspect",
+			"item": [
+				{
+					"name": "addCheckpoint",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"coordinates\": {\n\t\t\"latitude\": 2.3,\n\t\t\"longitude\": 2.4\n\t},\n    \"inspector\": {\n    \t\"username\": \"inspector\",\n    \t\"publicKey\": \"slkjdhslakjhdsa\"\n    }\n}"
+						},
+						"url": {
+							"raw": "centralledger.ist182061.tp.vps.tecnico.ulisboa.pt:8080/CentralLedger/v1/inspect",
+							"host": [
+								"centralledger",
+								"ist182061",
+								"tp",
+								"vps",
+								"tecnico",
+								"ulisboa",
+								"pt"
+							],
+							"port": "8080",
+							"path": [
+								"CentralLedger",
+								"v1",
+								"inspect"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "selectInspection",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "https://node1.centralledger.xyz:8443/CentralLedger/v1/inspect/1347/select",
+							"protocol": "https",
+							"host": [
+								"node1",
+								"centralledger",
+								"xyz"
+							],
+							"port": "8443",
+							"path": [
+								"CentralLedger",
+								"v1",
+								"inspect",
+								"1347",
+								"select"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "showInspection",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "https://node1.centralledger.xyz:8443/CentralLedger/v1/inspect/7/update/17",
+							"protocol": "https",
+							"host": [
+								"node1",
+								"centralledger",
+								"xyz"
+							],
+							"port": "8443",
+							"path": [
+								"CentralLedger",
+								"v1",
+								"inspect",
+								"7",
+								"update",
+								"17"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "showCheckpoint",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://node1.centralledger.xyz:8443/CentralLedger/v1/inspect/7",
+							"protocol": "https",
+							"host": [
+								"node1",
+								"centralledger",
+								"xyz"
+							],
+							"port": "8443",
+							"path": [
+								"CentralLedger",
+								"v1",
+								"inspect",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateInspection",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"proofMessage\": {\n        \t\"transport\": \"sdasdad\",\n        \t\"inspect\": \"sadsadsa\",\n        \t\"inspectionId\": 1,\n        \t\"tripId\": 1,\n        \t\"nonce\": 56454,\n        \t\"timestamp\": \"56489744\",\n        \t\"coordinates\": {\n        \t\t\"latitude\": 2.3,\n        \t\t\"longitude\": 2.4\n        \t}\n        },\n        \"signature\": \"dslakjhdsjklahds\"\n}"
+						},
+						"url": {
+							"raw": "centralledger.ist182061.tp.vps.tecnico.ulisboa.pt:8080/CentralLedger/v1/inspect/1/update/1",
+							"host": [
+								"centralledger",
+								"ist182061",
+								"tp",
+								"vps",
+								"tecnico",
+								"ulisboa",
+								"pt"
+							],
+							"port": "8080",
+							"path": [
+								"CentralLedger",
+								"v1",
+								"inspect",
+								"1",
+								"update",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "forceEndInspection",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://node1.centralledger.xyz:8443/CentralLedger/v1/inspect/1347/force/1542",
+							"protocol": "https",
+							"host": [
+								"node1",
+								"centralledger",
+								"xyz"
+							],
+							"port": "8443",
+							"path": [
+								"CentralLedger",
+								"v1",
+								"inspect",
+								"1347",
+								"force",
+								"1542"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

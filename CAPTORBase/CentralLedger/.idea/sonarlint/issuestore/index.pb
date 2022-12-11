@@ -1,0 +1,33 @@
+
+Z
+*.settings/org.eclipse.buildship.core.prefs,9/8/987edb9df1d92a3c88c967f3f7db8d459c9219ee
+;
+gradlew.bat,2/a/2a45a911a8f1836b0b6c5b758962572012d8f8c3
+7
+gradlew,5/b/5bbfa66edb4db3c7c33c5181f43510990d3307f9
+X
+(gradle/wrapper/gradle-wrapper.properties,f/b/fbe448ebfc3eb2d4e308f6b8b043666f5b57235e
+9
+	README.md,8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
+|
+Lsrc/main/java/pt/ulisboa/tecnico/captor/cl/api/AuthenticationApiService.java,a/3/a32e7f5006774894c66c0e8965d62669ccffe491
+u
+Esrc/main/java/pt/ulisboa/tecnico/captor/cl/api/AuthenticationApi.java,2/1/21c74294e57390dc23feb7991525996e710d6158
+s
+Csrc/main/java/pt/ulisboa/tecnico/captor/cl/api/ApiOriginFilter.java,7/0/706eb290c93a52cf68c69883d783a87e6d156a9e
+O
+src/main/webapp/WEB-INF/web.xml,2/e/2e22b6edd746fa3dc40ad7276c87c8d87d72a392
+I
+src/main/webapp/index.jsp,8/e/8e6d3b70c9f5b02570779b0441540d45eceb0ded
+r
+Bsrc/main/java/pt/ulisboa/tecnico/captor/cl/HaversineAlgorithm.java,1/e/1e11ea82ec1339313a8885f177e1f909a15667b9
+i
+9src/main/java/pt/ulisboa/tecnico/captor/cl/Bootstrap.java,8/4/84d9d888e6c5ce13e677dcb7d408059f84ca704e
+
+Osrc/main/java/pt/ulisboa/tecnico/captor/cl/repository/CheckpointRepository.java,2/3/2378d676f312a0482fd37bbc0e0296c6ecbfbe56
+É
+Ssrc/main/java/pt/ulisboa/tecnico/captor/cl/repository/CheckpointRepositoryImpl.java,8/d/8dbc5057bcbc4ad473a5cb8ae8e2b9b2c089cfc2
+Å
+Qsrc/main/java/pt/ulisboa/tecnico/captor/cl/impl/AuthenticationApiServiceImpl.java,3/5/35760a8798142f4926eb3cd15195bcc69706bf4a
+y
+Isrc/main/java/pt/ulisboa/tecnico/captor/cl/repository/UserRepository.java,6/2/623d09452f3c18207fd17d655cbb59d4d6a822ee

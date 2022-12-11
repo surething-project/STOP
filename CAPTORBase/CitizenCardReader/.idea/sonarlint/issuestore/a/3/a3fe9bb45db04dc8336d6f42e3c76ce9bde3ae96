@@ -1,0 +1,13 @@
+
+6python:S125
+"Remove this commented out code.(ò—òĞ
+qpython:S1542"RRename function "getSessionId" to match the regular expression ^[a-z_][a-z0-9_]*$.(Î¦” 8ÿÏß™0
+=python:S125"Remove this commented out code.(§Œ—8ïìÈ±™0
+qpython:S1542"RRename function "getWithToken" to match the regular expression ^[a-z_][a-z0-9_]*$.(ÁèÉÔ8ƒ¸ò™0
+Xpython:S4830"@Enable server certificate validation on this SSL/TLS connection.(·§Ï™
+6python:S125
+"Remove this commented out code.(ò—òĞ
+qpython:S1542"RRename function "getSessionId" to match the regular expression ^[a-z_][a-z0-9_]*$.(Î¦” 8ÿÏß™0
+=python:S125"Remove this commented out code.(§Œ—8óŠÉ±™0
+qpython:S1542"RRename function "getWithToken" to match the regular expression ^[a-z_][a-z0-9_]*$.(ÁèÉÔ8ƒ¸ò™0
+Xpython:S4830"@Enable server certificate validation on this SSL/TLS connection.(·§Ï™

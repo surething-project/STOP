@@ -1,0 +1,9 @@
+
+t	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(Àµÿìùÿÿÿÿ
+o	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(äÚ¢¬
+U
+java:S1118":Add a private constructor to hide the implicit public one.(„³˜ùÿÿÿÿ
+h	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÃÃôÿÿÿÿÿ
+c	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(µ˜¥–
+t
+java:S1488"YImmediately return this expression instead of assigning it to the temporary variable "d".(®©¼”ùÿÿÿÿ

@@ -1,0 +1,21 @@
+
+qpython:S116I"URename this field "stackedWidget" to match the regular expression ^[_a-z][_a-z0-9]*$.(­³§µûÿÿÿÿ
+ppython:S116’"XRename this field "cc_sureThing_img" to match the regular expression ^[_a-z][_a-z0-9]*$.(Ö‡Úá
+ƒpython:S1019"gRename class "Ui_MainWindow" to match the regular expression ^_?([A-Z_][a-zA-Z0-9]*|[a-z_][a-z0-9_]*)$.( Ìñýùÿÿÿÿ
+rpython:S117<"VRename this parameter "MainWindow" to match the regular expression ^[_a-z][a-z0-9_]*$.(ÂéÇ´ÿÿÿÿÿ
+gpython:S100<"KRename method "setupUi" to match the regular expression ^[a-z_][a-z0-9_]*$.(ÂéÇ´ÿÿÿÿÿ
+opython:S100ø"XRename method "create_sureThing_img" to match the regular expression ^[a-z_][a-z0-9_]*$.(‰–ê.
+jpython:S100þ"RRename method "CC_PIN_process" to match the regular expression ^[a-z_][a-z0-9_]*$.(†ù¨•
+xpython:S117…"`Rename this parameter "citizenCardSignature" to match the regular expression ^[_a-z][a-z0-9_]*$.(ß†Ïï
+upython:S117"]Rename this local variable "jsonToBeSent" to match the regular expression ^[_a-z][a-z0-9_]*$.(©“ç
+tpython:S117…"URename this parameter "publicKey" to match the regular expression ^[_a-z][a-z0-9_]*$.(ß†Ïï8ÖÁ—²™0
+wpython:S117‰"`Rename this local variable "qualifiedQrCode" to match the regular expression ^[_a-z][a-z0-9_]*$.(¢¼s
+kpython:S100ž"NRename method "QR_process" to match the regular expression ^[a-z_][a-z0-9_]*$.(‘òÛóüÿÿÿÿ
+spython:S117·"VRename this parameter "MainWindow" to match the regular expression ^[_a-z][a-z0-9_]*$.(”«Àþÿÿÿÿ
+npython:S100·"QRename method "retranslateUi" to match the regular expression ^[a-z_][a-z0-9_]*$.(”«Àþÿÿÿÿ
+rpython:S117Ç"URename this parameter "errorFunc" to match the regular expression ^[_a-z][a-z0-9_]*$.(àýû­úÿÿÿÿ
+rpython:S117Ç"URename this parameter "sessionId" to match the regular expression ^[_a-z][a-z0-9_]*$.(àýû­úÿÿÿÿ
+~python:S117Ø"ZRename this local variable "publicKey" to match the regular expression ^[_a-z][a-z0-9_]*$.(ÑÅ¼Âùÿÿÿÿ8Ž³™²™0
+mpython:S117ò"URename this parameter "sessionId" to match the regular expression ^[_a-z][a-z0-9_]*$.(„¼ó½
+npython:S1542ò"URename function "readCardWithPIN" to match the regular expression ^[a-z_][a-z0-9_]*$.(„¼ó½
+7python:S125ÿ"Remove this commented out code.(ë×ï»

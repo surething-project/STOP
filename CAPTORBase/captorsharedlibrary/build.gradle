@@ -1,0 +1,21 @@
+apply plugin: 'java'
+
+repositories {
+    // Use jcenter for resolving your dependencies.
+    // You can declare any Maven/Ivy/file repository here.
+    jcenter()
+    mavenCentral()
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'org.apache.commons:commons-lang3:3.12.0'
+    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.13.2'
+    compileOnly 'javax.validation:validation-api:2.0.1.Final'
+
+    implementation 'javax.xml.bind:jaxb-api:2.4.0-b180830.0359'
+
+    //implementation 'javax.persistence:javax.persistence-api:2.2'
+    implementation 'jakarta.platform:jakarta.jakartaee-web-api:9.1.0'
+}

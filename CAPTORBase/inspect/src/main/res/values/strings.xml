@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">STOP Inspect</string>
+    <string name="create_inspection">Create Inspection</string>
+    <string name="approve_inspection">Do you approve this inspection?</string>
+    <string name="status">Status:</string>
+    <string name="current_status">NULL</string>
+    <string name="waiting_transport">Waiting for Transport device&#8230;</string>
+    <string name="transport_found">Found Transport device! Waiting for Proof Request</string>
+    <string name="request_received">Proof Request received! Please start inspection and then approve</string>
+    <string name="approved">Inspection approved, thank you.</string>
+    <string name="create_checkpoint">Create Checkpoint</string>
+    <string name="welcome_auth">Welcome to the STOP Inspect app!</string>
+    <string name="login">Login user</string>
+    <string name="description">Please enter your fiscal credentials:</string>
+    <string name="fiscal_number">Fiscal No: PT</string>
+    <string name="password">Password</string>
+    <string name="error_auth">Login error: incorrect credentials. Please try again</string>
+    <string name="loading">Processing&#8230;</string>
+    <string name="username">User ID:</string>
+    <string name="checkpoint">Checkpoint ID:</string>
+    <string name="inspection">Inspection ID:</string>
+    <string name="selected">Selected transport is</string>
+    <string name="cancel">Cancel Inspection</string>
+</resources>

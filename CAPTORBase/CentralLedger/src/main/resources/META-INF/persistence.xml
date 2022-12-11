@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"
+             version="3.0">
+    <persistence-unit name="cl" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <class>pt.ulisboa.tecnico.captor.captorsharedlibrary.auth.User</class>
+        <class>pt.ulisboa.tecnico.captor.captorsharedlibrary.location.Coordinates</class>
+        <class>pt.ulisboa.tecnico.captor.captorsharedlibrary.inspection.Checkpoint</class>
+        <class>pt.ulisboa.tecnico.captor.captorsharedlibrary.inspection.Inspection</class>
+        <class>pt.ulisboa.tecnico.captor.captorsharedlibrary.inspection.InspectorLocationProof</class>
+        <class>pt.ulisboa.tecnico.captor.captorsharedlibrary.inspection.InspectorLocationProofMessage</class>
+        <class>pt.ulisboa.tecnico.captor.captorsharedlibrary.trip.Trip</class>
+        <class>pt.ulisboa.tecnico.captor.captorsharedlibrary.trip.LocationChain</class>
+        <class>pt.ulisboa.tecnico.captor.captorsharedlibrary.trip.LocationChainItem</class>
+        <class>pt.ulisboa.tecnico.captor.captorsharedlibrary.trip.LocationPoint</class>
+        <class>pt.ulisboa.tecnico.captor.captorsharedlibrary.trip.LocationProof</class>
+        <class>pt.ulisboa.tecnico.captor.captorsharedlibrary.trip.LP</class>
+        <class>pt.ulisboa.tecnico.captor.cl.data.UserTest</class>
+        <exclude-unlisted-classes>false</exclude-unlisted-classes>
+        <properties>
+            <property name="hibernate.archive.autodetection" value="class, hbm"/>
+            <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/centralLedger?serverTimezone=UTC"/>
+            <property name="jakarta.persistence.jdbc.user" value="tiagofonseca"/>
+            <property name="jakarta.persistence.jdbc.password" value="123"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+            <property name="hibernate.enable_lazy_load_no_trans" value="true"/> <!-- Not pretty... -->
+            <property name="jakarta.persistence.schema-generation.database.action" value="create"/>
+
+            <property name="hibernate.c3p0.min_size" value="5"/>
+            <property name="hibernate.c3p0.max_size" value="30"/>
+            <property name="hibernate.c3p0.timeout" value="300"/>
+            <property name="hibernate.c3p0.max_statements" value="50"/>
+            <property name="hibernate.c3p0.idle_test_period" value="3000"/>
+            <property name="hibernate.c3p0.testConnectionOnCheckout" value="true"/>
+        </properties>
+    </persistence-unit>
+</persistence>

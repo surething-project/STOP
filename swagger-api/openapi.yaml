@@ -1,0 +1,624 @@
+openapi: 3.0.0
+info:
+  description: >-
+    These are the endpoints provided by the Central Ledger server of CAPTOR.
+    These endpoints are used by the Inspect and Transport applications. The
+    Inspect application will use the endpoints with inspection tags and the
+    Transport application will use the endpoints with trip tags
+  version: 2.0.0
+  title: Central Ledger
+servers:
+  - url: 'https://api.centralledger.com/v1'
+tags:
+  - name: trip
+    description: Everything related with the transportation of a set of goods.
+  - name: inspection
+    description: Everything related with the inspection of transportation of goods.
+paths:
+  /trip:
+    post:
+      tags:
+        - trip
+      summary: Add a new trip
+      description: >-
+        This endpoint is used to report a scheduled transportation of a set of
+        specific goods. It received the information about the transportation.
+      operationId: addTrip
+      requestBody:
+        description: Trip object to be added
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Trip'
+      responses:
+        '200':
+          description: Trip was created successfully. The associated trip ID is returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/tripId'
+        '405':
+          description: Invalid input
+      security:
+        - ledger_auth:
+            - 'write:trips'
+            - 'read:trips'
+  '/trip/{tripId}':
+    get:
+      tags:
+        - trip
+      summary: Find trip by ID
+      description: >-
+        This endpoint is used to return information about a submitted scheduled
+        transportation of a set of specific goods. It receives the ID of the
+        specific trip and returns the trip information.
+      operationId: getTripById
+      parameters:
+        - name: tripId
+          in: path
+          description: ID of trip to return
+          required: true
+          schema:
+            $ref: '#/components/schemas/tripId'
+      responses:
+        '200':
+          description: Trip information is returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Trip'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Trip not found
+      security:
+        - ledger_auth:
+            - 'read:trips'
+  '/trip/{tripId}/begin':
+    post:
+      tags:
+        - trip
+      summary: Initialize trip
+      description: >-
+        This endpoint is used to indicate the initialization of a scheduled
+        transportion of a specific set of goods. It receives the ID of the
+        specific trip and the initial coordinates of the trip.
+      operationId: initializeTrip
+      parameters:
+        - name: tripId
+          in: path
+          description: ID of trip to begin
+          required: true
+          schema:
+            $ref: '#/components/schemas/tripId'
+      requestBody:
+        description: Initial coordinates
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LP'
+      responses:
+        '200':
+          description: Trip was initiated successfully
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Trip not found
+        '405':
+          description: Validation exception
+      security:
+        - ledger_auth:
+            - 'write:trips'
+            - 'read:trips'
+  '/trip/{tripId}/locate':
+    post:
+      tags:
+        - trip
+      summary: Update trip location
+      description: >-
+        This endpoint is used to report the current location of the
+        transportation. It receives the ID of the specific trip and the current
+        coordinates of the trip.
+      operationId: locateTrip
+      parameters:
+        - name: tripId
+          in: path
+          description: ID of trip to begin
+          required: true
+          schema:
+            $ref: '#/components/schemas/tripId'
+      requestBody:
+        description: Initial coordinates
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LP'
+      responses:
+        '200':
+          description: Trip location was updated successfully
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Trip not found
+        '405':
+          description: Validation exception
+      security:
+        - ledger_auth:
+            - 'write:trips'
+            - 'read:trips'
+    get:
+      tags:
+        - trip
+      summary: Get current trip location
+      description: >-
+        This endpoint is used to retrieve the current location of the
+        transportation. It receives the ID of the specific trip and it returns
+        the current coordinates of the trip.
+      operationId: getTripLocation
+      parameters:
+        - name: tripId
+          in: path
+          description: ID of trip to return
+          required: true
+          schema:
+            $ref: '#/components/schemas/tripId'
+      responses:
+        '200':
+          description: Trip location is returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LP'
+        '404':
+          description: Trip not found
+        '400':
+          description: Invalid ID supplied
+      security:
+        - ledger_auth:
+            - 'read:trips'
+  '/trip/{tripId}/end':
+    post:
+      tags:
+        - trip
+      summary: End trip
+      description: >-
+        This endpoint is used to report the end of the transportation. It
+        receives the ID of the specific trip and the coordinates of the final
+        location of the trip.
+      operationId: endTrip
+      parameters:
+        - name: tripId
+          in: path
+          description: ID of trip to begin
+          required: true
+          schema:
+            $ref: '#/components/schemas/tripId'
+      requestBody:
+        description: Initial location point
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LP'
+      responses:
+        '200':
+          description: Trip was ended successfully
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Trip not found
+        '405':
+          description: Validation exception
+      security:
+        - ledger_auth:
+            - 'write:trips'
+            - 'read:trips'
+  '/trip/{tripId}/inspect':
+    get:
+      tags:
+        - trip
+      summary: Check if trip was selected for inspection
+      description: >-
+        This endpoint is used to check if the specific trip was selected for
+        inspection. It received the ID of the trip and returns a boolean
+        indicating if the trip was selected.
+      operationId: checkTripInspection
+      parameters:
+        - name: tripId
+          in: path
+          description: ID of trip to begin
+          required: true
+          schema:
+            $ref: '#/components/schemas/tripId'
+      responses:
+        '200':
+          description: Trip inspection status
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    description: False if not selected for inspection
+                    additionalProperties:
+                      type: boolean
+                  - $ref: '#/components/schemas/Inspection'
+        '400':
+          description: Invalid ID supplied
+      security:
+        - ledger_auth:
+            - 'read:trips'
+  /inspect:
+    post:
+      tags:
+        - inspection
+      summary: Add a new checkpoint
+      description: >-
+        This endpoint is used to register a checkpoint. It receives the
+        checkpoint details adn returns the ID of the checkpoint.
+      operationId: addCheckpoint
+      requestBody:
+        description: Checkpoint object to be added
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Checkpoint'
+      responses:
+        '200':
+          description: >-
+            Checkpoint was created successfully. The associated checkpoint ID is
+            returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/checkpointId'
+        '405':
+          description: Invalid input
+      security:
+        - ledger_auth:
+            - 'write:inspections'
+            - 'read:inspections'
+  '/inspect/{checkpointId}':
+    get:
+      tags:
+        - inspection
+      summary: Show information about a checkpoint
+      description: >-
+        This endpoint is used to return the information regarding a specific
+        checkpoint. It receives the ID of the checkpoint and returns the
+        information about the checkpoint.
+      operationId: showCheckpoint
+      parameters:
+        - name: checkpointId
+          in: path
+          description: ID of checkpoint
+          required: true
+          schema:
+            $ref: '#/components/schemas/checkpointId'
+      responses:
+        '200':
+          description: Checkpoint information is returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Checkpoint'
+        '400':
+          description: Invalid ID supplied
+      security:
+        - ledger_auth:
+            - 'read:inspections'
+  '/inspect/{checkpointId}/select':
+    post:
+      tags:
+        - inspection
+      summary: Select a random vehicle for inspection
+      description: >-
+        This endpoint is used to select a trip for inspection. It receives the
+        ID of the checkpoint and returns the ID of the inspection
+      operationId: selectInspection
+      parameters:
+        - name: checkpointId
+          in: path
+          description: ID of checkpoint
+          required: true
+          schema:
+            $ref: '#/components/schemas/checkpointId'
+      responses:
+        '200':
+          description: Selection was successful. The inspection information is returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Inspection'
+        '400':
+          description: Invalid ID supplied
+      security:
+        - ledger_auth:
+            - 'write:inspections'
+            - 'read:inspections'
+  '/inspect/{checkpointId}/update/{inspectionId}':
+    get:
+      tags:
+        - inspection
+      summary: Show a inspection proof
+      description: >-
+        This endpoint is used to show a inspection proof. It receives the ID of
+        the checkpoint and the ID of the inspection and it returns the
+        inspection info and proof.
+      operationId: showInspection
+      parameters:
+        - name: checkpointId
+          in: path
+          description: ID of checkpoint
+          required: true
+          schema:
+            $ref: '#/components/schemas/checkpointId'
+        - name: inspectionId
+          in: path
+          description: ID of inspection
+          required: true
+          schema:
+            $ref: '#/components/schemas/inspectionId'
+      responses:
+        '200':
+          description: Inspection proof is returned
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/Inspection'
+                  - allOf:
+                      - $ref: '#/components/schemas/Inspection'
+                      - $ref: '#/components/schemas/LocationProofInspector'
+        '400':
+          description: Invalid ID supplied
+      security:
+        - ledger_auth:
+            - 'read:inspections'
+    post:
+      tags:
+        - inspection
+      summary: Upload a inspection proof
+      description: >-
+        This endpoint is used to upload a inspection proof. It receives the ID
+        of the checkpoint, the ID of the inspection and the inspection proof
+      operationId: updateInspection
+      parameters:
+        - name: checkpointId
+          in: path
+          description: ID of checkpoint
+          required: true
+          schema:
+            $ref: '#/components/schemas/checkpointId'
+        - name: inspectionId
+          in: path
+          description: ID of inspection
+          required: true
+          schema:
+            $ref: '#/components/schemas/inspectionId'
+      requestBody:
+        description: Proof object to be added
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LocationProofInspector'
+      responses:
+        '200':
+          description: Proof was uploaded successfully.
+        '400':
+          description: Invalid ID supplied
+        '405':
+          description: Invalid input
+      security:
+        - ledger_auth:
+            - 'write:inspections'
+            - 'read:inspections'
+components:
+  securitySchemes:
+    ledger_auth:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: 'https://centralledger.com'
+          tokenUrl: 'https://centralledger.com'
+          scopes:
+            'write:trips': modify trips
+            'read:trips': read your trips
+            'write:inspections': modify inspections
+            'read:inspections': read inspections
+    api_key:
+      type: apiKey
+      name: api_key
+      in: header
+  schemas:
+    tripId:
+      description: ''
+      type: integer
+      format: int64
+    inspectionId:
+      description: ''
+      type: integer
+      format: int64
+    checkpointId:
+      description: ''
+      type: integer
+      format: int64
+    nonce:
+      description: ''
+      type: integer
+      format: int64
+    key:
+      description: ''
+      type: string
+    Coordinates:
+      type: object
+      description: Decimal degree GPS coordinates
+      required:
+        - latitude
+        - longitude
+      properties:
+        latitude:
+          type: integer
+          format: int64
+        longitude:
+          type: integer
+          format: int64
+    Product:
+      description: ''
+      type: object
+      properties:
+        name:
+          type: string
+        quantity:
+          type: integer
+          format: int64
+        weight:
+          type: integer
+          format: int64
+    FiscalNumber:
+      type: object
+      description: Fiscal Number to identify a Company
+      properties:
+        number:
+          type: integer
+          format: int32
+    Trip:
+      type: object
+      description: Object to report a scheduled trip
+      required:
+        - senderNumber
+        - receiverNumber
+        - loadingCoordinates
+        - unloadingCoordinates
+        - freight
+        - time
+      properties:
+        id:
+          type: integer
+          format: int64
+        senderNumber:
+          $ref: '#/components/schemas/FiscalNumber'
+        receiverNumber:
+          $ref: '#/components/schemas/FiscalNumber'
+        loadingCoordinates:
+          $ref: '#/components/schemas/Coordinates'
+        unloadingCoordinates:
+          $ref: '#/components/schemas/Coordinates'
+        freight:
+          type: array
+          items:
+            $ref: '#/components/schemas/Product'
+        time:
+          type: string
+          description: Time at which the trip will start
+        vehicleLicensePlate:
+          type: string
+        status:
+          type: string
+          description: Current trip status
+          enum:
+            - scheduled
+            - on-route
+            - arrived
+    LocationPoint:
+      description: ''
+      allOf:
+        - $ref: '#/components/schemas/Coordinates'
+        - type: object
+          required:
+            - timestamp
+            - previousSig
+          properties:
+            timestamp:
+              type: string
+              format: date-time
+            previousSig:
+              type: string
+    LocationProofInspectorMessage:
+      description: ''
+      allOf:
+        - $ref: '#/components/schemas/Coordinates'
+        - type: object
+          required:
+            - timestamp
+          properties:
+            timestamp:
+              type: string
+              format: date-time
+    LocationProofInspector:
+      description: ''
+      allOf:
+        - $ref: '#/components/schemas/LocationProofInspectorMessage'
+        - type: object
+          required:
+            - signature
+          properties:
+            signature:
+              description: Signature made by Inspector
+              type: string
+    LocationProof:
+      description: ''
+      allOf:
+        - $ref: '#/components/schemas/LocationProofInspector'
+        - type: object
+          required:
+            - previousSig
+          properties:
+            previousSig:
+              type: string
+    LP:
+      description: ''
+      allOf:
+        - anyOf:
+            - $ref: '#/components/schemas/LocationPoint'
+            - $ref: '#/components/schemas/LocationProof'
+        - type: object
+          required:
+            - signature
+          properties:
+            signature:
+              description: Signature made by Transport device
+              type: string
+    Checkpoint:
+      description: ''
+      type: object
+      required:
+        - coordinates
+        - checkpointId
+        - inspectorKey
+      properties:
+        coordinates:
+          $ref: '#/components/schemas/Coordinates'
+        checkpointId:
+          $ref: '#/components/schemas/checkpointId'
+        inspectorKey:
+          description: ''
+          type: object
+          properties:
+            key:
+              $ref: $/components/schemas/key
+    Inspection:
+      description: ''
+      type: object
+      required:
+        - checkpoint
+        - inspectionId
+        - transportKey
+        - nonce
+      properties:
+        checkpoint:
+          $ref: '#/components/schemas/Checkpoint'
+        inspectionId:
+          $ref: $/components/schemas/inspectionId
+        transportKey:
+          description: ''
+          type: object
+          properties:
+            key:
+              $ref: $/components/schemas/key
+        nonce:
+          $ref: $/components/schemas/nonce

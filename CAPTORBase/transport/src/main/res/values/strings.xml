@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">STOP Transport</string>
+    <string name="scanning">Scanning for Inspect device</string>
+    <string name="select_device">Please select the Inspector</string>
+    <string name="no_inspector_found">Inspector not found</string>
+    <string name="arrived">Arrived at Checkpoint</string>
+    <string name="status">Status:</string>
+    <string name="current_status">NULL</string>
+    <string name="found_inspector">Found Inspector, sending request</string>
+    <string name="sent_request">Sent Request to Inspect device</string>
+    <string name="proof_received">Received proof!</string>
+    <string name="create_trip">Create Trip</string>
+    <string name="start_trip">Start</string>
+    <string name="end_trip">End</string>
+    <string name="selected">You were selected</string>
+    <string name="connection_issue">Connection problem</string>
+    <string name="welcome_auth">Welcome to the STOP Transport app!</string>
+    <string name="login">Login user</string>
+    <string name="description">Please enter your fiscal credentials:</string>
+    <string name="fiscal_number">Fiscal No: PT</string>
+    <string name="password">Password</string>
+    <string name="error_auth">Login error: incorrect credentials. Please try again</string>
+    <string name="loading">Processing&#8230;</string>
+    <string name="date">Date:</string>
+    <string name="time">Time:</string>
+    <string name="no_packages">How many packages?</string>
+    <string name="receiver">Receiver Fiscal No.:</string>
+    <string name="info_default">The current location will be used.</string>
+    <string name="schedule">Schedule trip</string>
+    <string name="instruction">Please</string>
+    <string name="resume">I am resuming the trip</string>
+    <string name="retry">Retry</string>
+    <string name="logout">Logout</string>
+    <string name="user">User ID:</string>
+    <string name="current_trip">Current Trip ID:</string>
+    <string name="cancel">Cancel Inspection</string>
+</resources>

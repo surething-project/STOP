@@ -1,0 +1,502 @@
+{
+	"info": {
+		"_postman_id": "9c707ece-d4ca-4d72-b4d5-4c3b1c3dcc89",
+		"name": "CentralLedger localhost",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Trip",
+			"item": [
+				{
+					"name": "getTripById",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8080/CentralLedger/v1/trip/4",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"CentralLedger",
+								"v1",
+								"trip",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addTrip",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"initialCoordinates\": {\n        \"latitude\": 3.1,\n        \"longitude\": 2.1\n    },\n    \"transport\": {\n    \t\"id\": 1,\n    \t\"username\": \"TRANSPORT\",\n    \t\"publicKey\": \"fdsfds\"\n    }\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/CentralLedger/v1/trip",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"CentralLedger",
+								"v1",
+								"trip"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "initializeTrip",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"location\": {\n\t\t\"number\": 1,\n\t\t\"tripId\": 4,\n\t\t\"coordinates\": {\n        \t\"latitude\": 2.2,\n        \t\"longitude\": 2.3\n    \t},\n    \t\"timestamp\": \"3456789\",\n    \t\"accuracy\": 12.2\n\t}\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/CentralLedger/v1/trip/4/begin",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"CentralLedger",
+								"v1",
+								"trip",
+								"4",
+								"begin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "locateTrip",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"location\": {\n\t\t\"number\": 3,\n\t\t\"tripId\": 4,\n\t\t\"coordinates\": {\n        \t\"latitude\": 2.2,\n        \t\"longitude\": 2.5\n    \t},\n    \t\"timestamp\": \"3456789\",\n    \t\"accuracy\": 12.2\n\t}\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/CentralLedger/v1/trip/4/locate",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"CentralLedger",
+								"v1",
+								"trip",
+								"4",
+								"locate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addProof",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"number\": 3,\n\t\"tripId\": 1,\n\t\"previousLocationSignature\": \"dsadsadwadsdsw\",\n\t\"inspectorLocationProof\": {\n        \"proofMessage\": {\n        \t\"transport\": \"sdasdad\",\n        \t\"inspect\": \"sadsadsa\",\n        \t\"inspectionId\": 1,\n        \t\"tripId\": 1,\n        \t\"nonce\": 56454,\n        \t\"timestamp\": \"56489744\",\n        \t\"coordinates\": {\n        \t\t\"latitude\": 2.3,\n        \t\t\"longitude\": 2.4\n        \t}\n        },\n        \"signature\": \"dslakjhdsjklahds\"\n    },\n    \"timestamp\": \"345333333\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/CentralLedger/v1/trip/1/proof",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"CentralLedger",
+								"v1",
+								"trip",
+								"1",
+								"proof"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "endTrip",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"number\": 2,\n\t\"tripId\": 1,\n\t\"coordinates\": {\n        \"latitude\": 2.3,\n        \"longitude\": 2.4\n    },\n    \"timestamp\": \"345333333\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/CentralLedger/v1/trip/1/end",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"CentralLedger",
+								"v1",
+								"trip",
+								"1",
+								"end"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "checkTripInspection",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/CentralLedger/v1/trip/4/inspect",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"CentralLedger",
+								"v1",
+								"trip",
+								"4",
+								"inspect"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "forceEndTrip",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/CentralLedger/v1/trip/1078/force",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"CentralLedger",
+								"v1",
+								"trip",
+								"1078",
+								"force"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "registerTransport",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"publicKey\": \"fdsfds\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/CentralLedger/v1/auth/transport/register",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"CentralLedger",
+								"v1",
+								"auth",
+								"transport",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "registerInspect",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"publicKey\": \"fdsfdshhghg\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/CentralLedger/v1/auth/inspect/register",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"CentralLedger",
+								"v1",
+								"auth",
+								"inspect",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Inspect",
+			"item": [
+				{
+					"name": "addCheckpoint",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"coordinates\": {\n\t\t\"latitude\": 1.3,\n\t\t\"longitude\": 1.4\n\t},\n    \"inspector\": {\n    \t\"id\": 2,\n    \t\"username\": \"INSPECT\",\n    \t\"publicKey\": \"fdsfdshhghg\"\n    }\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/CentralLedger/v1/inspect",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"CentralLedger",
+								"v1",
+								"inspect"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "selectInspection",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/CentralLedger/v1/inspect/3/select",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"CentralLedger",
+								"v1",
+								"inspect",
+								"3",
+								"select"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "showInspection",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/CentralLedger/v1/inspect/3/update/9",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"CentralLedger",
+								"v1",
+								"inspect",
+								"3",
+								"update",
+								"9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "showCheckpoint",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/CentralLedger/v1/inspect/3",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"CentralLedger",
+								"v1",
+								"inspect",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateInspection",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"proofMessage\": {\n        \t\"transport\": \"TRANSPORT49100\",\n        \t\"inspect\": \"INSPECT9444\",\n        \t\"inspectionId\": 9,\n        \t\"tripId\": 4,\n        \t\"nonce\": 27614,\n        \t\"timestamp\": \"56489744\",\n        \t\"coordinates\": {\n        \t\t\"latitude\": 2.3,\n        \t\t\"longitude\": 2.4\n        \t},\n        \t\"accuracy\": 2.3\n        },\n    \"signature\": \"dslakjhdsjklahds\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/CentralLedger/v1/inspect/3/update/9",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"CentralLedger",
+								"v1",
+								"inspect",
+								"3",
+								"update",
+								"9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "forceEndInspection",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/CentralLedger/v1/inspect/1077/force/1135",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"CentralLedger",
+								"v1",
+								"inspect",
+								"1077",
+								"force",
+								"1135"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
